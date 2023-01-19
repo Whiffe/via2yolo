@@ -1,10 +1,17 @@
 # 这一段代码是将via转化为yolo格式
-# python via2yolo.py
+# python via2yolo.py --tain_r 0.65
 
 import os
 import json
 import cv2
 import random
+import argparse
+
+parser = argparse.ArgumentParser()
+
+parser.add_argument('--tain_r', default=0.65,type=float)
+
+arg = parser.parse_args()
 
 # yolo数据集的存放位置 Dataset_dir
 Dataset_dir = './Dataset'
@@ -14,7 +21,7 @@ os.system('rm -r '+Dataset_dir+'/*')
 os.system('mkdir -p '+Dataset_dir+'/{labels,images}/{train,val}')
 
 # 训练集与验证集的比例，tain_r代表训练集的比例，1-tain_r 代表验证集的比例
-tain_r = 0.65
+tain_r = arg.tain_r
 # 设置 labels images train val 的路径
 train_label_dir = Dataset_dir + '/labels/train/'
 val_label_dir = Dataset_dir + '/labels/val/'
