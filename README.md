@@ -17,3 +17,9 @@ visual.py的作用可视化yolo数据集
 ```
 python visual.py --Dataset_dir ./Dataset --Visual_dir ./Visual
 ```
+
+# 4 check_dot.py
+check_dot.py是将找到小点对应的图片名字（图片名字中包含路径信息）
+```
+python check_dot.py --dot_size 15
+```
