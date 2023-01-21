@@ -1,5 +1,7 @@
 # via2yolo
 via->yolo, yolo->via
+
+via2yolo，是将via中标注的数据转化为yolo格式数据集，并且对数据集可视化与检测，检查包括数量上的检查和小点的检查。
 # 1 via2yolo.py
 via2yolo.py是将via转化为yolo格式
 ```
