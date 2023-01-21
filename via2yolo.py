@@ -1,5 +1,5 @@
 # 这一段代码是将via转化为yolo格式
-# python via2yolo.py --tain_r 0.65
+# python via2yolo.py --Via_Dataset_dir ./via_dataset --Dataset_dir ./Dataset --tain_r 0.65
 
 import os
 import json
@@ -9,12 +9,17 @@ import argparse
 
 parser = argparse.ArgumentParser()
 
+parser.add_argument('--Via_Dataset_dir', default='./via_dataset',type=str)
+parser.add_argument('--Dataset_dir', default='./Dataset',type=str)
 parser.add_argument('--tain_r', default=0.65,type=float)
 
 arg = parser.parse_args()
 
+Via_Dataset_dir = arg.Via_Dataset_dir
+
 # yolo数据集的存放位置 Dataset_dir
-Dataset_dir = './Dataset'
+Dataset_dir = arg.Dataset_dir
+
 # 清空 Dataset_dir 下的文件及文件夹
 os.system('rm -r '+Dataset_dir+'/*')
 # 在 Dataset_dir 下创建 labels images train val
@@ -100,7 +105,7 @@ def via2yolo(json,root):
             file.write(xcyc_wh)
 
 # 循环 读出所有json文件            
-for root, dirs, files in os.walk("./", topdown=False):
+for root, dirs, files in os.walk(Via_Dataset_dir, topdown=False):
     for name in files:
         file_dir = os.path.join(root, name)
         if '.json' in name:
