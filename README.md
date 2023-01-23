@@ -36,7 +36,7 @@ python via2yolo.py --Via_Dataset_dir ./via_dataset --Dataset_dir ./Dataset --tai
 # 2 check.py
 check.py的作用就是是检查via中的框的数量和yolo格式数据集的框的数量是否一致
 ```
-python check.py
+python check.py --Dataset_dir ./Dataset
 ```
 
 # 3 visual.py
