@@ -2,7 +2,6 @@
 # python check_dot.py --dot_size 15
 import os
 import json
-import cv2
 import argparse
 
 parser = argparse.ArgumentParser()
