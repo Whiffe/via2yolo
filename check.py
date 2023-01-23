@@ -3,9 +3,18 @@
 import os
 import json
 import cv2
+import argparse
+
+parser = argparse.ArgumentParser()
+
+parser.add_argument('--Dataset_dir', default='./Dataset',type=str)
+
+arg = parser.parse_args()
 
 # yolo数据集的存放位置 Dataset_dir
-Dataset_dir = './Dataset'
+#Dataset_dir = './Dataset'
+Dataset_dir = arg.Dataset_dir
+
 # train_label_dir 训练标签的位置
 train_label_dir = os.path.join(Dataset_dir,'labels/train')
 # val_label_dir 测试标签的位置
