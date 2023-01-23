@@ -1,5 +1,5 @@
 # 这一段代码是将via转化为yolo格式
-# python via2yolo.py --Via_Dataset_dir ./via_dataset --Dataset_dir ./Dataset --tain_r 0.65
+# python via2yolo.py --Via_Dataset_dir ./via_dataset --Dataset_dir ./Dataset --tain_r 0.8
 
 import os
 import json
