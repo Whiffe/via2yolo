@@ -28,9 +28,11 @@ pip install opencv-python-headless==4.1.2.30
 
 
 # 1 via2yolo.py
-via2yolo.py是将via转化为yolo格式
+via2yolo1.py是将via转化为yolo格式
+
+注意这是 via 中只框选了举手这个动作，就是将框转化为yolo格式，行为默认为 0
 ```
-python via2yolo.py --Via_Dataset_dir ./via_dataset --Dataset_dir ./Dataset --tain_r 0.8
+python via2yolo1.py --Via_Dataset_dir ./via_dataset --Dataset_dir ./Dataset --tain_r 0.8
 ```
 
 # 2 check.py
@@ -49,4 +51,10 @@ python visual.py --Dataset_dir ./Dataset --Visual_dir ./Visual
 check_dot.py是将找到小点对应的图片名字（图片名字中包含路径信息）
 ```
 python check_dot.py --dot_size 15
+```
+
+# 5 viaExtendAction1.py
+viaExtendAction1.py是对举手的数据集进行via标注扩展，扩展更多动作
+```
+python viaExtendAction1.py --Dataset_dir ./Dataset --newDataset_dir ./newDataset
 ```
