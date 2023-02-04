@@ -3,7 +3,6 @@ via->yolo, yolo->via
 
 via2yolo，是将via中标注的数据转化为yolo格式数据集，并且对数据集可视化与检测，检查包括数量上的检查和小点的检查。
 
-注意：一些代码 暂不支持windows，请在 macOS 或者 linux 系统上操作
 
 环境搭建：
 ```
