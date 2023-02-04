@@ -22,7 +22,7 @@ riseHand_via_dataset = arg.riseHand_via_dataset
 # yolo数据集的存放位置 Dataset_dir
 riseHand_Dataset = arg.riseHand_Dataset
 
-# 清空 Dataset_dir 下的文件及文件夹
+# 清空 riseHand_Dataset 下的文件及文件夹
 if os.path.exists(riseHand_Dataset):
     shutil.rmtree(riseHand_Dataset)
 # 在 Dataset_dir 下创建 labels images train val
