@@ -1,6 +1,7 @@
 # 这一段代码是将via转化为yolo格式
-# python via2yolo.py --Via_Dataset_dir ./via_dataset --Dataset_dir ./Dataset --tain_r 0.8
+# python via2yolo.py --Via_Dataset_dir ./riseHand_via_dataset --Dataset_dir ./riseHand_Dataset --tain_r 0.8
 # 注意这是 via 中只框选了举手这个动作，就是将框转化为yolo格式，行为默认为 0
+# 注意，这个不兼容windows系统
 
 import os
 import json
