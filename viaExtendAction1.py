@@ -1,20 +1,21 @@
 # 这段代码是对举手的数据集进行via标注扩展，扩展更多动作
-# python viaExtendAction1.py --Dataset_dir ./Dataset --newDataset_dir ./newDataset
+# python viaExtendAction1.py --riseHand_via_dataset ./riseHand_via_dataset --RRW_via_Dataset ./RRW_via_Dataset
 
 import os
 import json
 import argparse
+import shutil
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--Dataset_dir', default='./Dataset',type=str)
-parser.add_argument('--newDataset_dir', default='./newDataset',type=str)
+parser.add_argument('--riseHand_via_dataset', default='./riseHand_via_dataset',type=str)
+parser.add_argument('--RRW_via_Dataset', default='./RRW_via_Dataset',type=str)
 
 arg = parser.parse_args()
 
-# Dataset_dir 是举手数据集的位置
-Dataset_dir = arg.Dataset_dir
-# newDataset_dir 是扩展后的数据集的位置
-newDataset_dir = arg.newDataset_dir
+# Dataset_dir 是via举手数据集的位置
+riseHand_via_dataset = arg.riseHand_via_dataset
+# newDataset_dir 是扩展后的via数据集的位置，RRW分别代表举手、看书、写字
+RRW_via_Dataset = arg.RRW_via_Dataset
 
 # 扩展数据集
 attributes_dict = {
@@ -22,7 +23,13 @@ attributes_dict = {
               anchor_id='FILE1_Z0_XY1'),
     }
 
-for root, dirs, files in os.walk(Dataset_dir, topdown=False):
+# 清空 RRW_via_Dataset 下的文件及文件夹
+if os.path.exists(RRW_via_Dataset):
+    shutil.rmtree(RRW_via_Dataset)
+# 将riseHand_via_dataset复制
+shutil.copytree(riseHand_via_dataset,RRW_via_Dataset)
+
+for root, dirs, files in os.walk(riseHand_via_dataset, topdown=False):
     for name in files:
         if '.json' in name:
             json_path = os.path.join(root, name)
@@ -33,7 +40,7 @@ for root, dirs, files in os.walk(Dataset_dir, topdown=False):
                 for ele in json_data['metadata']:
                     # 添加举手的标签
                     json_data['metadata'][ele]['av'] = {"1": "0"}
-            new_json_pathx = json_path.replace(Dataset_dir, newDataset_dir)
+            new_json_pathx = json_path.replace(riseHand_via_dataset, RRW_via_Dataset)
 
             new_json = open(new_json_pathx, 'w')
             new_json.write(json.dumps(json_data))
