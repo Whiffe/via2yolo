@@ -19,7 +19,7 @@ RRW_via_Dataset = arg.RRW_via_Dataset
 
 # 扩展数据集
 attributes_dict = {
-    '1': dict(aname='动作', type=3, options={'0': '举手', '1': '看书', '2': '写字', '3': '趴桌'}, default_option_id="",
+    '1': dict(aname='动作', type=3, options={'0': '举手', '1': '看书', '2': '写字'}, default_option_id="",
               anchor_id='FILE1_Z0_XY1'),
     }
 
