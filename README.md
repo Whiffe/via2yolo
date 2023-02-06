@@ -45,7 +45,7 @@ via2yolo2.py是将via转化为yolo格式
 
 注意这是 via 中多个动作转化为yolo格式
 
-并且可以检查没有标注的框，并给出没有标注的图片
+并且可以检查没有标注的框，并给出没有标注的图片名字
 ```
 python via2yolo2.py --RRW_via_Dataset  ./RRW_via_Dataset --RRW_Dataset ./RRW_Dataset --tain_r 0.8
 ```
