@@ -1,5 +1,5 @@
 # 这一段代码是将via转化为yolo格式
-# python via2yolo2.py --Via_Dataset_dir  ./RRW_via_Dataset --Dataset_dir ./RRW_Dataset --tain_r 0.8
+# python via2yolo2.py --RRW_via_Dataset  ./RRW_via_Dataset --RRW_Dataset ./RRW_Dataset --tain_r 0.8
 # 注意这是 via 中多个动作转化为yolo格式
 
 import os
@@ -11,35 +11,35 @@ import shutil
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument('--Via_Dataset_dir', default='./viaDatasetActions', type=str)
-parser.add_argument('--Dataset_dir', default='./DatasetActions', type=str)
+parser.add_argument('--RRW_via_Dataset', default='./RRW_via_Dataset', type=str)
+parser.add_argument('--RRW_Dataset', default='./RRW_Dataset', type=str)
 parser.add_argument('--tain_r', default=0.8, type=float)
 
 arg = parser.parse_args()
 
-Via_Dataset_dir = arg.Via_Dataset_dir
+RRW_via_Dataset = arg.RRW_via_Dataset
 
 # yolo数据集的存放位置 Dataset_dir
-Dataset_dir = arg.Dataset_dir
+RRW_Dataset = arg.RRW_Dataset
 
 # 删除 Dataset_dir 文件夹
-if os.path.exists(Dataset_dir):
-    shutil.rmtree(Dataset_dir)
+if os.path.exists(RRW_Dataset):
+    shutil.rmtree(RRW_Dataset)
 # 在 Dataset_dir 下创建 labels images train val
-os.makedirs(Dataset_dir + '/labels/train')
-os.makedirs(Dataset_dir + '/labels/val')
-os.makedirs(Dataset_dir + '/images/train')
-os.makedirs(Dataset_dir + '/images/val')
+os.makedirs(RRW_Dataset + '/labels/train')
+os.makedirs(RRW_Dataset + '/labels/val')
+os.makedirs(RRW_Dataset + '/images/train')
+os.makedirs(RRW_Dataset + '/images/val')
 
 
 
 # 训练集与验证集的比例，tain_r代表训练集的比例，1-tain_r 代表验证集的比例
 tain_r = arg.tain_r
 # 设置 labels images train val 的路径
-train_label_dir = Dataset_dir + '/labels/train/'
-val_label_dir = Dataset_dir + '/labels/val/'
-train_image_dir = Dataset_dir + '/images/train/'
-val_image_dir = Dataset_dir + '/images/val/'
+train_label_dir = RRW_Dataset + '/labels/train/'
+val_label_dir = RRW_Dataset + '/labels/val/'
+train_image_dir = RRW_Dataset + '/images/train/'
+val_image_dir = RRW_Dataset + '/images/val/'
 
 
 # via2yolo 函数是将via信息转化为yolo的格式·
@@ -117,7 +117,7 @@ def via2yolo(json, root):
 
 
 # 循环 读出所有json文件
-for root, dirs, files in os.walk(Via_Dataset_dir, topdown=False):
+for root, dirs, files in os.walk(RRW_via_Dataset, topdown=False):
     for name in files:
         file_dir = os.path.join(root, name)
         if '.json' in name:
