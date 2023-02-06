@@ -1,6 +1,7 @@
 # 这一段代码是将via转化为yolo格式
 # python via2yolo2.py --RRW_via_Dataset  ./RRW_via_Dataset --RRW_Dataset ./RRW_Dataset --tain_r 0.8
 # 注意这是 via 中多个动作转化为yolo格式
+# 并且可以检查没有标注的框，并给出没有标注的图片
 
 import os
 import json
@@ -62,7 +63,15 @@ def via2yolo(json, root):
         xywh = json['metadata'][i]['xy'][1:]
 
         # 获取动作的id
-        action_id = json['metadata'][i]['av']['1']
+
+        try:
+            action_id = json['metadata'][i]['av']['1']
+        except KeyError:
+            print(json['metadata'][i]['av'])
+            print("下面的图片中有没有标注的框")
+            print("image_name:",image_name)
+            input()
+
 
         '''
         将xywh 转化为 yolo 的格式
