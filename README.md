@@ -59,7 +59,7 @@ python check.py --via_Dataset ./riseHand_via_dataset --yolo_Dataset ./riseHand_D
 # 3 visual.py
 visual.py的作用可视化yolo数据集
 ```
-python visual.py --Dataset_dir ./Dataset --Visual_dir ./Visual
+python visual.py --yolo_Dataset ./riseHand_Dataset --Visual_dir ./Visual
 ```
 
 # 4 check_dot.py
