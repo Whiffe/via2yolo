@@ -53,7 +53,7 @@ python via2yolo2.py --RRW_via_Dataset  ./RRW_via_Dataset --RRW_Dataset ./RRW_Dat
 # 2 check.py
 check.py的作用就是是检查via中的框的数量和yolo格式数据集的框的数量是否一致
 ```
-python check.py --Dataset_dir ./Dataset
+python check.py --via_Dataset ./riseHand_via_dataset --yolo_Dataset ./riseHand_Dataset
 ```
 
 # 3 visual.py
