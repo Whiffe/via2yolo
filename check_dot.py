@@ -1,5 +1,5 @@
 # 这一段代码是将找到小点对应的图片名字（图片名字中包含路径信息）
-# python check_dot.py --dot_size 15
+# python check_dot.py --dot_size 15 --via_Dataset ./riseHand_via_dataset
 import os
 import json
 import argparse
@@ -7,9 +7,12 @@ import argparse
 parser = argparse.ArgumentParser()
 # dot_size 是调整筛选小点的阈值
 parser.add_argument('--dot_size', default=15,type=int)
+parser.add_argument('--via_Dataset', default='./riseHand_via_dataset',type=str)
+
 arg = parser.parse_args()
 
 dot_size = arg.dot_size
+via_Dataset = arg.via_Dataset
 
 # 计数有多少小点
 dot_num = 0
@@ -32,7 +35,7 @@ def search_dot(json,root):
             dot_num = dot_num +1
 
 # 循环 读出所有json文件            
-for root, dirs, files in os.walk("./", topdown=False):
+for root, dirs, files in os.walk(via_Dataset, topdown=False):
     for name in files:
         file_dir = os.path.join(root, name)
         if '.json' in name:
