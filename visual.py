@@ -1,28 +1,31 @@
-# python visual.py --Dataset_dir ./Dataset --Visual_dir ./Visual
+# python visual.py --yolo_Dataset ./riseHand_Dataset --Visual_dir ./Visual
 # 本代码的作用可视化yolo数据
 import os
 import numpy as np
 import cv2
 import argparse
+import shutil
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument('--Dataset_dir', default='./Dataset',type=str)
+parser.add_argument('--yolo_Dataset', default='./riseHand_Dataset',type=str)
 parser.add_argument('--Visual_dir', default='./Visual',type=str)
 
 arg = parser.parse_args()
-Dataset_dir = arg.Dataset_dir
+yolo_Dataset = arg.yolo_Dataset
 Visual_dir = arg.Visual_dir
 
-# 创建 Visual_dir
-os.system('mkdir -p '+Visual_dir)
-# 清空 Visual_dir
-os.system('rm -r '+Visual_dir+'/*')
+# 清空 Visual_dir 下的文件及文件夹
+if os.path.exists(Visual_dir):
+    shutil.rmtree(Visual_dir)
 
-train_label_path = os.path.join(Dataset_dir,'labels/train')
-train_image_path = os.path.join(Dataset_dir,'images/train')
-val_label_path = os.path.join(Dataset_dir,'labels/val')
-val_image_path = os.path.join(Dataset_dir,'images/val')
+# 在 Visual_dir 下创建 labels images train val
+os.makedirs(Visual_dir)
+
+train_label_path = os.path.join(yolo_Dataset,'labels/train')
+train_image_path = os.path.join(yolo_Dataset,'images/train')
+val_label_path = os.path.join(yolo_Dataset,'labels/val')
+val_image_path = os.path.join(yolo_Dataset,'images/val')
 
             
 #坐标转换，原始存储的是YOLOv5格式
