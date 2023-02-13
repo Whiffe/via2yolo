@@ -1,5 +1,5 @@
 # 该文件的作用就是是检查via中的框的数量和yolo格式数据集的框的数量是否一致
-# python check.py --Dataset_dir ./Dataset
+# python check.py --via_Dataset ./riseHand_via_dataset --yolo_Dataset ./riseHand_Dataset
 import os
 import json
 import cv2
@@ -7,18 +7,19 @@ import argparse
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument('--Dataset_dir', default='./Dataset',type=str)
-
+parser.add_argument('--via_Dataset', default='./riseHand_via_dataset',type=str)
+parser.add_argument('--yolo_Dataset', default='./riseHand_Dataset',type=str)
 arg = parser.parse_args()
 
-# yolo数据集的存放位置 Dataset_dir
-#Dataset_dir = './Dataset'
-Dataset_dir = arg.Dataset_dir
+# yolo数据集的存放位置 yolo_Dataset
+yolo_Dataset = arg.yolo_Dataset
+# via数据集的存放位置 via_Dataset
+via_Dataset = arg.via_Dataset
 
 # train_label_dir 训练标签的位置
-train_label_dir = os.path.join(Dataset_dir,'labels/train')
+train_label_dir = os.path.join(yolo_Dataset,'labels/train')
 # val_label_dir 测试标签的位置
-val_label_dir = os.path.join(Dataset_dir,'labels/val')
+val_label_dir = os.path.join(yolo_Dataset,'labels/val')
 
 # countBox 是计算 json 文件中 每张图片对应多少框
 def countBox(json,root):
@@ -67,7 +68,7 @@ def check_yolo(dict_box):
         
             
 # 循环 读出所有json文件            
-for root, dirs, files in os.walk("./", topdown=False):
+for root, dirs, files in os.walk(via_Dataset, topdown=False):
     for name in files:
         file_dir = os.path.join(root, name)
         if '.json' in name:
