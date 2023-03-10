@@ -7,6 +7,8 @@ via->yolo, yolo->via
 
 【腾讯文档】杨帆 分享给你多个文件 [https://docs.qq.com/s/GmsJlEbZPL2QqvUMarbfxG](https://docs.qq.com/s/GmsJlEbZPL2QqvUMarbfxG)
 
+b站视频：
+[https://www.bilibili.com/video/BV1cT411e7Rr/](https://www.bilibili.com/video/BV1cT411e7Rr/)
 ----
 
 via2yolo，是将via中标注的数据转化为yolo格式数据集，并且对数据集可视化与检测，检查包括数量上的检查和小点的检查。
