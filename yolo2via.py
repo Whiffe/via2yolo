@@ -4,6 +4,7 @@ import os
 import argparse
 from collections import defaultdict
 import cv2
+import json
 
 parser = argparse.ArgumentParser()
 '''
@@ -89,3 +90,17 @@ for root, dirs, files in os.walk(img_path, topdown=False):
     via3.dumpViews(views_dict)
     
     via3.dempJsonSave()
+    
+# 由于生成的json文件中存在 av={'1': '0'}，需要将其设置为 av={}，本来打算在生成的时候就这么写，但是报错
+# 所以在生成之后替换掉
+
+# 读取json
+with open(json_path, 'r', encoding='utf-8') as f:
+    json_file = f.read()
+# 替换
+json_file = json_file.replace("\"1\": \"0\"", " ")
+
+# 保存json
+json_out = json.loads(json_file)
+with open(json_path, 'w', encoding='utf-8') as f:
+    json.dump(json_out, f) 
