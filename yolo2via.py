@@ -1,19 +1,25 @@
+# python yolo2via.py --img_path /root/autodl-tmp/1000 --label_path  ./runs/detect/1000/labels --json_path ./1000.json
 from via3_tool import Via3Json
-import pickle
-import csv
-from collections import defaultdict
 import os
-import cv2
-import sys
 import argparse
+from collections import defaultdict
+import cv2
 
 parser = argparse.ArgumentParser()
-
-parser.add_argument('--yoloLabel_dir', default='./chooseVideoFrameYolov5/exp/labels',type=str, help="Label path for yolov5")
-parser.add_argument('--image_dir', default='./chooseVideoFrame',type=str, help="Path of video frames")
-parser.add_argument('--labelName_dir', default='detection.json',type=str, help="Label the file name")
+'''
+--img_path 是图片的路径
+--label_path 是yolo检测后txt的路径
+--json_path 是将要生成json的路径
+'''
+parser.add_argument('--img_path', default='/root/autodl-tmp/1000',type=str)
+parser.add_argument('--label_path', default='./runs/detect/1000/labels',type=str)
+parser.add_argument('--json_path', default='./1000.json',type=str)
 
 arg = parser.parse_args()
+
+img_path = arg.img_path
+json_path = arg.json_path
+label_path = arg.label_path
 
 #坐标格式转化 xywh代表：中心点与宽长，xyxy代表左上角点与右下角点
 def xywh2xyxy(box):
@@ -25,78 +31,61 @@ def xywh2xyxy(box):
     temp[3] = float(box[1]) + float(box[3]) / 2  # bottom right y
     return temp
 
-#最后的via产生的标注文件，viaDetectionPath为存放标注文件的路径
-viaDetectionPath = arg.image_dir + '/' + arg.labelName_dir
-
-via3 = Via3Json(viaDetectionPath, mode='dump')
-
-#计数有多少图片（即标注文件数量）
+# 循环图片的数量，记录到num_images中
 num_images = 0
-for root, dirs, files in os.walk(arg.image_dir, topdown=False):
+for root, dirs, files in os.walk(img_path, topdown=False):
     for name in files:
-        if 'checkpoint' not in name:
-            if 'jpg' in name:
-                num_images = num_images + 1
+        if '.png' in name:
+            num_images += 1
 
-attributes_dict = {}
+via3 = Via3Json(json_path, mode='dump')
 vid_list = list(map(str,range(1, num_images+1)))
 via3.dumpPrejects(vid_list)
 via3.dumpConfigs()
+
+attributes_dict = {}
+
 via3.dumpAttributes(attributes_dict)
+
 files_dict,  metadatas_dict = {},{}
 
-#图片ID从1开始计算
 image_id = 1
-
-#循环遍历yolov5的检测标签
-for root, dirs, files in os.walk(arg.yoloLabel_dir, topdown=False):
+for root, dirs, files in os.walk(img_path, topdown=False):
     for name in files:
-        if 'txt' in name and 'checkpoint' not in name:
-
-            #读取txt中的信息
-            txtInfo=open(os.path.join(root, name))
-            txtInfoLines = txtInfo.readlines() 
+        if '.png' in name:
+            files_dict[str(image_id)] = dict(fname=name, type=2)
             
-            #标注文件对应的图片
-            tempImageName = name.split('.')[0] + '.jpg'
-            files_dict[str(image_id)] = dict(fname=tempImageName, type=2)
-            print("files_dict:",files_dict)
-            
-            img = cv2.imread(arg.image_dir+'/'+tempImageName)  #读取图片信息
-            print(arg.image_dir+'/'+tempImageName)
+            img = cv2.imread( os.path.join(root,name) ) #读取图片信息
             sp = img.shape #[高|宽|像素值由三种原色构成]
             img_H = sp[0]
             img_W = sp[1]
-            for vid,txtInfoLine in enumerate(txtInfoLines,1):
-                #只要身体的检测框
-                if txtInfoLine.split(' ')[0] == '1':
-                    txtInfoLineArr = txtInfoLine.split(' ')[1:5]
-                    txtInfoLineArr[0] = float(txtInfoLineArr[0])
-                    txtInfoLineArr[1] = float(txtInfoLineArr[1])
-                    txtInfoLineArr[2] = float(txtInfoLineArr[2])
-                    txtInfoLineArr[3] = float(txtInfoLineArr[3])
-                    txtInfoLineArr = xywh2xyxy(txtInfoLineArr)
-                    xyxy = txtInfoLineArr
-                    xyxy[0] = img_W*txtInfoLineArr[0]
-                    xyxy[2] = img_W*txtInfoLineArr[2]
-                    xyxy[1] = img_H*txtInfoLineArr[1]
-                    xyxy[3] = img_H*txtInfoLineArr[3]
-                    temp_w = xyxy[2] - xyxy[0]
-                    temp_h = xyxy[3] - xyxy[1]
-
-                    metadata_dict = dict(vid=str(image_id),flg=0,z=[],
-                                     xy=[2, float(xyxy[0]), float(xyxy[1]), float(temp_w), float(temp_h)],
-                                     av={'1': '0'})
-                    metadatas_dict['image{}_{}'.format(image_id,vid)] = metadata_dict
-
-            image_id = image_id + 1 
-            via3.dumpFiles(files_dict)
-            via3.dumpMetedatas(metadatas_dict)
             
-views_dict = {}
-for i, vid in enumerate(vid_list,1):
-    views_dict[vid] = defaultdict(list)
-    views_dict[vid]['fid_list'].append(str(i))
+            txt_name = name.split('.png')[0]+'.txt'
+            txt_path = os.path.join(label_path,txt_name)
+            # 判断txt是否存在，因为未检测出目标的图片不会产生txt文件
+            if os.path.exists(txt_path):
+                print("txt_path:",txt_path)
+                file_txt=open(txt_path).readlines()
+                for vid,line in enumerate(file_txt,1):
+                    array_line = line.split(' ')
+                    yolo_box = [float(array_line[1]),float(array_line[2]),float(array_line[3]),float(array_line[4])]
+                    via_box = xywh2xyxy(yolo_box)
+                    metadata_dict = dict(vid=str(image_id),
+                                    flg=str(0),
+                                    xy=[2, float(via_box[0]*img_W), float(via_box[1]*img_H), float(via_box[2]*img_W)-float(via_box[0]*img_W), float(via_box[3])*img_H-float(via_box[1]*img_H)],
+                                    av={'1': '0'})
+                    metadatas_dict['image{}_{}'.format(image_id,vid)] = metadata_dict
+             
+        image_id += 1
+            
+    via3.dumpFiles(files_dict)
+    via3.dumpMetedatas(metadatas_dict)
 
-via3.dumpViews(views_dict)
-via3.dempJsonSave()
+    views_dict = {}
+
+    for i, vid in enumerate(vid_list,1):
+        views_dict[vid] = defaultdict(list)
+        views_dict[vid]['fid_list'].append(str(i))
+    via3.dumpViews(views_dict)
+    
+    via3.dempJsonSave()
