@@ -82,3 +82,11 @@ python check_dot.py --dot_size 15 --via_Dataset ./riseHand_via_dataset
 # 5 yoloDet2via.py
 yoloDet2via.py是将yolo的检测结果导入到via中
 
+# 6 png2jpg.py 
+png2jpg.py 是将png格式转化为jpg格式
+
+```
+python png2jpg.py --imgIn /root/autodl-tmp/riseHand_Dataset/images/ --imgOut /root/autodl-tmp/VOC/JPEGImages/
+```
+
+
