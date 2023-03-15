@@ -1,5 +1,17 @@
+# python png2jpg.py --imgIn /root/autodl-tmp/riseHand_Dataset/images/ --imgOut /root/autodl-tmp/VOC/JPEGImages/
 import os
 from PIL import Image
+import argparse
+
+parser = argparse.ArgumentParser()
+
+parser.add_argument('--imgIn', default='/root/autodl-tmp/riseHand_Dataset/images/',type=str)
+parser.add_argument('--imgOut', default='/root/autodl-tmp/VOC/JPEGImages/',type=str)
+
+arg = parser.parse_args()
+
+imgIn = arg.imgIn
+imgOut = arg.imgOut
 
 count=0
 def png2jpg(imgIn,imgOut):
@@ -26,12 +38,8 @@ def png2jpg(imgIn,imgOut):
         else:
             continue
 
-imgIn="/root/autodl-tmp/riseHand_Dataset/images/train/" 
-imgOut="/root/autodl-tmp/VOC/JPEGImages/"
-png2jpg(imgIn,imgOut)
-
-imgIn="/root/autodl-tmp/riseHand_Dataset/images/val/" 
-png2jpg(imgIn,imgOut)
+png2jpg(imgIn+'train/',imgOut)
+png2jpg(imgIn+'val/',imgOut)
 
 
 print('*' * 50)
