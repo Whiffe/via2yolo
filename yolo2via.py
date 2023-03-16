@@ -1,3 +1,4 @@
+# yolo2via.py是将yolo的检测结果转化为via可以识别的格式
 # python yolo2via.py --img_path /root/autodl-tmp/1000 --label_path  ./runs/detect/1000/labels --json_path ./1000.json
 from via3_tool import Via3Json
 import os
