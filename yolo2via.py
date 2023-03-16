@@ -52,6 +52,7 @@ files_dict,  metadatas_dict = {},{}
 
 image_id = 1
 for root, dirs, files in os.walk(img_path, topdown=False):
+    files.sort()
     for name in files:
         if '.png' in name:
             files_dict[str(image_id)] = dict(fname=name, type=2)
