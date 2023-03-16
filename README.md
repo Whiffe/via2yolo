@@ -79,8 +79,11 @@ check_dot.py是将找到小点对应的图片名字（图片名字中包含路�
 python check_dot.py --dot_size 15 --via_Dataset ./riseHand_via_dataset
 ```
 
-# 5 yoloDet2via.py
-yoloDet2via.py是将yolo的检测结果导入到via中
+# 5 yolo2via.py
+yolo2via.py是将yolo的检测结果转化为via可以识别的格式
+```
+python yolo2via.py --img_path /root/autodl-tmp/1000 --label_path  ./runs/detect/1000/labels --json_path ./1000.json
+```
 
 # 6 png2jpg.py 
 png2jpg.py 是将png格式转化为jpg格式
