@@ -43,13 +43,19 @@ val_image_dir = riseHand_Dataset + '/images/val/'
 # via2yolo 函数是将via信息转化为yolo的格式
 def via2yolo(json,root):
     # 循环读出每一个框的信息
+    #print("img:",json['file'])
     for i in json['metadata']:
         # 从 i 中获取 vid
         vid = i.split('_')[0]
+        # 自动化标注的数据中，有image这个字符串，所以需要再次提取
+        if 'image' in vid:
+            vid = vid.split('image')[-1]
         # 获取对应的图片名字
         image_name = json['file'][vid]['fname']
         # 获取图片的路径
         image_dir = os.path.join(root, image_name) 
+        #print("image_dir:",image_dir)
+        #print(os.path.exists(image_dir))
         
         # 读取图片的高和宽
         img = cv2.imread(image_dir)
