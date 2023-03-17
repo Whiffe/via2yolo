@@ -92,4 +92,10 @@ png2jpg.py 是将png格式转化为jpg格式
 python png2jpg.py --imgIn /root/autodl-tmp/riseHand_Dataset/images/ --imgOut /root/autodl-tmp/VOC/JPEGImages/
 ```
 
+# 7 pngCheck.py
+pngCheck.py 的作用是检查via文件中图片格式是否正确
+```
+python pngCheck.py --riseHand_via_dataset ./riseHand_via_dataset
+```
+
 
