@@ -25,6 +25,9 @@ def search_dot(json,root):
     for i in json['metadata']:
         # 读取vid，一张图片中的所有框，vid是相同的
         vid = i.split('_')[0]
+        # 自动化标注的数据中，有image这个字符串，所以需要再次提取
+        if 'image' in vid:
+            vid = vid.split('image')[-1]
         # 通过 vid 找到对应的图片
         image_name = json['file'][vid]['fname']
         # 读取坐标信息
