@@ -14,7 +14,7 @@ arg = parser.parse_args()
 imgIn = arg.imgIn
 imgOut = arg.imgOut
 
-# 清空 riseHand_Dataset 下的文件及文件夹
+# 清空 imgOut 下的文件及文件夹
 if os.path.exists(imgOut):
     shutil.rmtree(imgOut)
 
