@@ -89,7 +89,7 @@ python yolo2via.py --img_path /root/autodl-tmp/1000 --label_path  ./runs/detect/
 png2jpg.py 是将png格式转化为jpg格式
 
 ```
-python png2jpg.py --imgIn /root/autodl-tmp/riseHand_Dataset/images/ --imgOut /root/autodl-tmp/VOC/JPEGImages/
+python png2jpg.py --imgIn ./riseHand_Dataset/images/ --imgOut ./VOC/JPEGImages/
 ```
 
 # 7 pngCheck.py
