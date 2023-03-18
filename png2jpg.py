@@ -6,8 +6,8 @@ import shutil
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument('--imgIn', default='/root/autodl-tmp/riseHand_Dataset/images/',type=str)
-parser.add_argument('--imgOut', default='/root/autodl-tmp/VOC/JPEGImages/',type=str)
+parser.add_argument('--imgIn', default='./riseHand_Dataset/images/',type=str)
+parser.add_argument('--imgOut', default='./VOC/JPEGImages/',type=str)
 
 arg = parser.parse_args()
 
