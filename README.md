@@ -98,7 +98,17 @@ pngCheck.py 的作用是检查via文件中图片格式是否正确
 python pngCheck.py --riseHand_via_dataset ./riseHand_via_dataset
 ```
 
-# 8 yolo2voc.py
+# 8 jpg2png.py
+jpg2png.py 的作用是找出via文件中jpg格式的图片
+
+由于本代码会将jpg图片转化为png格式，这就需要将原来的文件备份一次
+
+备份的文件夹名字为：riseHand_via_dataset1
+```
+python jpg2png.py --riseHand_via_dataset ./riseHand_via_dataset --riseHand_via_dataset1 ./riseHand_via_dataset1
+```
+
+# 9 yolo2voc.py
 yolo2voc.py的作用是将yolo格式的数据集转化为voc格式的数据集
 ```
 python yolo2voc.py --JPEGImages ./VOC/JPEGImages/ --yoloPath ./riseHand_Dataset/labels/ --xmlPath ./VOC/Annotations/
