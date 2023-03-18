@@ -1,7 +1,8 @@
-# python png2jpg.py --imgIn /root/autodl-tmp/riseHand_Dataset/images/ --imgOut /root/autodl-tmp/VOC/JPEGImages/
+# python png2jpg.py --imgIn ./riseHand_Dataset/images/ --imgOut ./VOC/JPEGImages/
 import os
 from PIL import Image
 import argparse
+import shutil
 
 parser = argparse.ArgumentParser()
 
@@ -12,6 +13,12 @@ arg = parser.parse_args()
 
 imgIn = arg.imgIn
 imgOut = arg.imgOut
+
+# 清空 riseHand_Dataset 下的文件及文件夹
+if os.path.exists(imgOut):
+    shutil.rmtree(imgOut)
+
+os.makedirs(imgOut)
 
 count=0
 def png2jpg(imgIn,imgOut):
