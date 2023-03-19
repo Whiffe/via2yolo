@@ -1,4 +1,3 @@
-# yolo2via.py是将yolo的检测结果转化为via可以识别的格式
 # python yolo2via.py --img_path /root/autodl-tmp/1000 --label_path  ./runs/detect/1000/labels --json_path ./1000.json
 from via3_tool import Via3Json
 import os
@@ -55,6 +54,14 @@ image_id = 1
 for root, dirs, files in os.walk(img_path, topdown=False):
     files.sort()
     for name in files:
+        # 使用macos系统上传压缩包时，会产生iml、xml、.DS_Store文件，那需要跳过这些文件
+        if '.iml' in name:
+            continue
+        if '.xml' in name:
+            continue
+        if '.DS_Store' in name:
+            continue
+        
         if '.png' in name:
             files_dict[str(image_id)] = dict(fname=name, type=2)
             
