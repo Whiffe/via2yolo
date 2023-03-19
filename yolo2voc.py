@@ -1,4 +1,3 @@
-# yolo2voc.py的作用是将yolo格式的数据集转化为voc格式的数据集
 # python yolo2voc.py --JPEGImages ./VOC/JPEGImages/ --yoloPath ./riseHand_Dataset/labels/ --xmlPath ./VOC/Annotations/
 from xml.dom.minidom import Document
 import os
@@ -30,8 +29,8 @@ def makexml(picPath, txtPath, xmlPath):  # txt所在文件夹路径，xml文件�
     """此函数用于将yolo格式txt标注文件转换为voc格式xml标注文件
     在自己的标注图片文件夹下建三个子文件夹，分别命名为picture、txt、xml
     """
-    dic = {'0': "hat",  # 创建字典用来对类型进行转换
-           '1': "person",  # 此处的字典要与自己的classes.txt文件中的类对应，且顺序要一致
+    dic = {'0': "rise hand",  # 创建字典用来对类型进行转换
+           #'1': "person",  # 此处的字典要与自己的classes.txt文件中的类对应，且顺序要一致
            }
     files = os.listdir(txtPath)
     files.sort()
