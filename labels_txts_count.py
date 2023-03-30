@@ -1,4 +1,8 @@
 # python labels_txts_count.py --dir_path riseHand_Dataset
+'''
+labels_txts_count.py 的作用是统计 所有txt有多少行（即对应图片中有多少标签）
+并且统计有多少txt文件（即统计有多少图片）
+'''
 
 import os
 import argparse
