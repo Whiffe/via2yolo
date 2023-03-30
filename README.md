@@ -130,3 +130,10 @@ countLabels.py 的作用是统计yolo数据集中，每张图片标签数的范�
 python countLabels.py --dir_path riseHand_Dataset
 ```
 
+# 11 labels_txts_count.py
+labels_txts_count.py 的作用是统计 所有txt有多少行（即对应图片中有多少标签）
+
+并且统计有多少txt文件（即统计有多少图片）
+```
+python labels_txts_count.py --dir_path riseHand_Dataset
+```
