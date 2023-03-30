@@ -118,3 +118,15 @@ yolo2voc.py的作用是将yolo格式的数据集转化为voc格式的数据集
 python yolo2voc.py --JPEGImages ./VOC/JPEGImages/ --yoloPath ./riseHand_Dataset/labels/ --xmlPath ./VOC/Annotations/
 ```
 
+# 10 countLabels.py
+countLabels.py 的作用是统计yolo数据集中，每张图片标签数的范围
+
+如统计图片中有1～5个标签的图片数量
+
+如统计图片中有6～10个标签的图片数量等
+
+实现方式是计算每个txt中的行数，然后进行统计
+```
+python countLabels.py --dir_path riseHand_Dataset
+```
+
