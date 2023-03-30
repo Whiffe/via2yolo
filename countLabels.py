@@ -1,6 +1,6 @@
 # python countLabels.py --dir_path riseHand_Dataset
 '''
-countLabels.py 的作用是统计yolo数据集中，每张图片标签数的范围
+countLabels.py 的作用是统计yolo数据集中，每张图片标签数的范围（区间标注量统计）
 
 如统计图片中有1～5个标签的图片数量
 
