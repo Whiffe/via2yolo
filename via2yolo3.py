@@ -48,9 +48,15 @@ def via2yolo(json, root):
     # 循环读出每一个框的信息
     for i in json['metadata']:
         # 从 i 中获取 vid
+        print("i",i)
         vid = i.split('_')[0]
+        if 'image' in vid:
+            vid = vid.split('image')[-1]
         # 获取对应的图片名字
+        print("vid",vid)
         image_name = json['file'][vid]['fname']
+        print("image_name",image_name)
+        input()
         # 获取图片的路径
         # 由于图片是一个链接，所以就取链接的最后一个 / 后面的内容
         image_dir = os.path.join(root, image_name.split('/')[-1])
