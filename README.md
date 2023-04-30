@@ -141,3 +141,20 @@ labels_txts_count.py 的作用是统计 所有txt有多少行（即对应图片�
 ```
 python labels_txts_count.py --dir_path riseHand_Dataset
 ```
+
+# 12 via2yolo3.py
+via2yolo3.py是将via转化为yolo格式
+
+注意这是 via 中多个动作（以看书写字举手为例）转化为yolo格式
+
+并且可以检查没有标注的框，并给出没有标注的图片
+
+```
+python via2yolo3.py --via_Dataset  ./RRW_via_Dataset/ --yolo_Dataset ./yolo_Dataset --tain_r 0.8
+```
+
+# 13 yolo2via2.py
+yolo2via2.py 将举手看书写字的预测结果转化为json
+```
+python yolo2via2.py --img_path /root/autodl-tmp/1000 --label_path  ./runs/detect/1000/labels --json_path ./1000.json
+```
