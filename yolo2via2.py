@@ -1,4 +1,4 @@
-# python yolo2via2.py --img_path /root/autodl-tmp/1000 --label_path  ./runs/detect/1000/labels --json_path ./1000.json
+# python yolo2via2.py --img_path /root/autodl-tmp/3000 --label_path  ./runs/detect/3000/labels --json_path ./3000.json
 # 这是将举手看书写字的预测结果转化为json
 
 from via3_tool import Via3Json
@@ -48,7 +48,7 @@ via3.dumpConfigs()
 
 
 attributes_dict = {'1':dict(aname='behavior', type=3, options={'0':'举手',
-                   '1':'看书', '2':'写字'},default_option_id='0', anchor_id = 'FILE1_Z0_XY1')}
+                   '1':'看书', '2':'写字'},default_option_id='', anchor_id = 'FILE1_Z0_XY1')}
 
 
 via3.dumpAttributes(attributes_dict)
@@ -89,6 +89,7 @@ for root, dirs, files in os.walk(img_path, topdown=False):
                                     flg=str(0),
                                     xy=[2, float(via_box[0]*img_W), float(via_box[1]*img_H), float(via_box[2]*img_W)-float(via_box[0]*img_W), float(via_box[3])*img_H-float(via_box[1]*img_H)],
                                     av={'1': array_line[0]})
+                    
                     metadatas_dict['image{}_{}'.format(image_id,vid)] = metadata_dict
              
         image_id += 1
@@ -104,7 +105,7 @@ for root, dirs, files in os.walk(img_path, topdown=False):
     via3.dumpViews(views_dict)
     
     via3.dempJsonSave()
-    
+'''    
 # 由于生成的json文件中存在 av={'1': '0'}，需要将其设置为 av={}，本来打算在生成的时候就这么写，但是报错
 # 所以在生成之后替换掉
 
@@ -114,7 +115,9 @@ with open(json_path, 'r', encoding='utf-8') as f:
 # 替换
 json_file = json_file.replace("\"1\": \"0\"", " ")
 
+
 # 保存json
 json_out = json.loads(json_file)
 with open(json_path, 'w', encoding='utf-8') as f:
     json.dump(json_out, f) 
+'''
