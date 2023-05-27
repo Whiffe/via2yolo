@@ -1,4 +1,4 @@
- '''
+'''
 输入参数是yolo数据集的路径，如：
 python countLabels3.py /path/to/yolo/dataset
 
