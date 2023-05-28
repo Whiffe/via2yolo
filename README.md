@@ -143,9 +143,9 @@ python labels_txts_count.py --dir_path riseHand_Dataset
 ```
 结果示例：
 
-所有txt文件有内容的行数量为： 12381
+  所有txt文件有内容的行数量为： 12381
 
-txt文件的数量为： 3215
+  txt文件的数量为： 3215
 
 # 12 via2yolo3.py
 via2yolo3.py是将via转化为yolo格式
