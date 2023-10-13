@@ -167,4 +167,12 @@ python yolo2via2.py --img_path /root/autodl-tmp/1000 --label_path  ./runs/detect
 
 # 14 count_dataset_class_num.py
 count_dataset_class_num.py 是统计数据集的图片数量和标注数量，第一个参数是数据集的路径，第二个参数是数据集的类别数量
+```
 python count_dataset_class_num.py --dataset_path ./4.2k_HRW_yolo_dataset --num_class 3
+```
+
+# 15 countVideos.py
+countVideos.py计算yolo数据集中视频的数量，图片名中包含视频名信息
+```
+python countVideos.py
+```
