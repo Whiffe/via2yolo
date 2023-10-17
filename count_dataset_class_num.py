@@ -1,4 +1,4 @@
-# python count_dataset_class_num.py --dataset_path ./4.2k_HRW_yolo_dataset --num_class 3
+# python count_dataset_class_num.py --dataset_path ./yolo_behavior_Dataset_all2 --num_class 5
 import os
 import argparse
 
@@ -16,10 +16,17 @@ num_class = arg.num_class
 def count_class_num(labels_list,txt_path,class_num_list):
     for i in labels_list:
         file_path = os.path.join(txt_path, i)
+        if '.ini' in file_path:
+            continue
         file = open(file_path, 'r')  # 打开文件
         file_data = file.readlines()  # 读取所有行
         for every_row in file_data:
             class_val = every_row.split(' ')[0]
+            try:
+                int(class_val)
+            except:
+                    
+                print(file_path)
             class_ind = class_list.index(int(class_val))
             class_num_list[class_ind] += 1
         file.close()
@@ -60,5 +67,4 @@ total_class_num_list = [i + j for i, j in zip(class_num_val_list, class_num_trai
 print("All total:")
 print(total_class_num_list)
 print('total:', sum(total_class_num_list))
-
 
