@@ -1,4 +1,4 @@
-# 这段代码是对举手的数据集进行via标注扩展，扩展更多动作
+# 这段代码是对举手的数据集进行via标注扩展，扩展更多动作（举手、看书、写字）
 # python viaExtendAction1.py --riseHand_via_dataset ./riseHand_via_dataset --RRW_via_Dataset ./RRW_via_Dataset
 
 import os
