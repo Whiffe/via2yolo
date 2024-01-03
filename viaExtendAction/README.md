@@ -24,3 +24,5 @@ viaExtendAction3.py 是将举手、看书、写字三个动作，扩展为三个
 viaExtendAction4.py 是将举手、看书、写字三个动作(两个模块)，扩展为三个模块的7个动作
 
 由于我们已经完成了一部分viaExtendAction2.py产生的数据，所以需要将该数据也转化为三个模块的7个动作
+
+CSDN：[https://blog.csdn.net/WhiffeYF/article/details/135355159](https://blog.csdn.net/WhiffeYF/article/details/135355159)
