@@ -26,3 +26,27 @@ viaExtendAction4.py 是将举手、看书、写字三个动作(两个模块)，�
 由于我们已经完成了一部分viaExtendAction2.py产生的数据，所以需要将该数据也转化为三个模块的7个动作
 
 CSDN：[https://blog.csdn.net/WhiffeYF/article/details/135355159](https://blog.csdn.net/WhiffeYF/article/details/135355159)
+
+# viaExtendAction5.py
+
+viaExtendAction5.py 是将以下三个模块的动作（7个）扩展为四个模块的7+3个动作
+
+raise the hand
+
+read、write、hand clap、discuss、lie on the table
+
+talk
+
+扩展为：
+
+raise the hand
+
+read、write、hand clap、discuss、lie on the table
+
+talk
+
+bow the head、look up、turn the head
+
+执行代码如下：
+
+python viaExtendAction5.py  --SCB_via_org ./SCB5_jpg --SCB_via_new ./SCB5_jpg_10
