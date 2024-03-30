@@ -15,3 +15,9 @@ visual2.py 是可视化标注的框，和可视化标签（但需要在代码中
 ```
 python visual2.py --yolo_Dataset yolo_behavior_Dataset-2023-12-31 --Visual_dir ./Visual
 ```
+
+# visual3.py
+visual3.py 是可视化标注的框，和可视化标签 需要传入可视化标签的list，还可以加入是否显示标签，显示是True，不显示是False
+```
+python visual3.py --yolo_Dataset SCB-exetend-BUT --Visual_dir ./Visual --labels_class ['A','B','C']  --show_label False
+```
