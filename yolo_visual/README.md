@@ -21,3 +21,4 @@ visual3.py 是可视化标注的框，和可视化标签 需要传入可视化�
 ```
 python visual3.py --yolo_Dataset SCB-exetend-BUT --Visual_dir ./Visual --labels_class ['A','B','C']  --show_label False
 ```
+
