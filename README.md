@@ -176,3 +176,6 @@ countVideos.py计算yolo数据集中视频的数量，图片名中包含视频�
 ```
 python countVideos.py
 ```
+
+# 16 dataset_format.py
+dataset_format.py 的作用是将命名不规范的图片和文本，如1.jpg或者1.txt转化为0001.jpg和0001.txt
