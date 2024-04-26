@@ -1,4 +1,6 @@
 # python visual3.py --yolo_Dataset SCB-exetend-BUT --Visual_dir ./Visual --labels_class ['A','B','C']  --show_label False
+# mac 上运行需要修改 ['A','B','C'] 为 "['A','B','C']"
+# python visual3.py --yolo_Dataset SCB-exetend-BUT --Visual_dir ./Visual --labels_class "['A','B','C']"  --show_label False
 import os
 import numpy as np
 import cv2
@@ -71,7 +73,8 @@ def read_labels(file):
             labels.append(label)
     return labels
 # 设置颜色
-color = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0), (255, 0, 255), (255, 255, 0), (255, 128, 0), (204, 0, 102),(0, 100 , 0), (139, 0, 139), (139, 69, 19), (160, 82, 45)]
+# (255, 0, 0) 红色。 (0, 255, 0) 绿色。  (0, 0, 255) 蓝色。 (255, 255, 0) 黄色。
+color = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0), (255, 0, 255), (255, 128, 0), (204, 0, 102),(0, 100 , 0), (139, 0, 139), (139, 69, 19), (160, 82, 45)]
 def visual_train_val(label_path,image_path_train_val):
     for root, dirs, files in os.walk(label_path, topdown=False):
         # 循环遍历出所有的txt
