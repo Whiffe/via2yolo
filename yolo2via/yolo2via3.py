@@ -1,4 +1,4 @@
-# python yolo2via3.py --img_path ../detect_frames/4003 -- label_path  ../1s_university_yolo_Dataset_labels --json_path  ../detect_frames/4003/4003.json
+# python yolo2via3.py --img_path ../detect_frames/4003 --label_path  ../1s_university_yolo_Dataset_labels --json_path  ../detect_frames/4003/4003.json
 # 这是将举手看书写字的预测结果转化为json
 
 from via3_tool import Via3Json
