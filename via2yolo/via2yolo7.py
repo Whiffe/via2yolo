@@ -101,7 +101,11 @@ def via2yolo(json, root):
                 # input()
                 continue
         else:
-            continue
+            # 只标注了一个行为，av为空
+            if json['metadata'][i]['av'] == {}:
+                action_id = '0'
+            else:
+                continue
         '''
         将xywh 转化为 yolo 的格式
         第一个参数是0，代表举手这一个分类
