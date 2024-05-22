@@ -9,9 +9,9 @@ talk
 raise the hand
 read、write、hand clap、discuss、lie on the table
 talk
-bow the head、look up、turn the head
+guide、answer、On-stage interaction、blackboard-writing student、blackboard-writing teacher、make an inspection tour
 
-python viaExtendAction5.py  --SCB_via_org ./SCB5_jpg --SCB_via_new ./SCB5_jpg_10
+python viaExtendAction5.py  --SCB_via_org ./SCB5-extend-tb --SCB_via_new ./SCB5-extend-tb2
 '''
 import os
 import json
@@ -44,7 +44,7 @@ attributes_dict =  {
 		"2": {
 			"aname": "behavior 2",
 			"anchor_id": "FILE1_Z0_XY1",
-			"type": 2,
+			"type": 3,
 			"desc": "",
 			"options": {
 				"0": "read",
@@ -68,12 +68,15 @@ attributes_dict =  {
 		"4": {
 			"aname": "behavior 4",
 			"anchor_id": "FILE1_Z0_XY1",
-			"type": 2,
+			"type": 3,
 			"desc": "",
 			"options": {
-				"0": "bow the head",
-				"1": "look up",
-				"2": "turn the head",
+				"0": "guide",
+				"1": "answer",
+				"2": "On-stage interaction",
+				"3": "blackboard-writing student",
+				"4": "blackboard-writing teacher",
+				"5": "make an inspection tour",
 			},
 			"default_option_id": ""
 		}
@@ -90,6 +93,7 @@ for root, dirs, files in os.walk(SCB_via_org, topdown=False):
     for name in files:
         if '.json' in name:
             json_path = os.path.join(root, name)
+            print("json_path:",json_path)
             with open(json_path) as f:
                 json_data = json.load(f)
                 # 添加扩展动作
