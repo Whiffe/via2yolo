@@ -9,6 +9,9 @@ python merge_yolo_txt.py --folder1 ./SCB-yolo-TB/labels/0087  --folder2 SCB-yolo
 python merge_yolo_txt.py --folder1 ./SCB-yolo-TB/labels/0088  --folder2 SCB-yolo-TB-detect2/0088/labels/
 python merge_yolo_txt.py --folder1 ./SCB-yolo-TB/labels/0090  --folder2 SCB-yolo-TB-detect2/0090/labels/
 python merge_yolo_txt.py --folder1 ./SCB-yolo-TB/labels/0091  --folder2 SCB-yolo-TB-detect2/0091/labels/
+
+
+这个脚本会检查 folder2 中的所有 txt 文件，如果文件名在 folder1 中已经存在，则将 folder2 中对应文件的内容追加到 folder1 中的文件中。如果文件名不存在，则将文件从 folder2 复制到 folder1。
 '''
 import os
 import shutil
