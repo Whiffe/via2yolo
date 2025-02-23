@@ -1,7 +1,7 @@
 '''
 Datset_Excek2LLM.py的作用是将人工标注的Excel转化为视觉大模型的json格式，并且进行了数据平衡操作
 
-excel的格式如下，以experimental_Bridge文件夹下的0037文件夹为例：
+excel的格式如下，以experimental_Bridge文件夹下的0037文件夹为例： 
 0037_000001					
 0037_000002					
 0037_000003					
