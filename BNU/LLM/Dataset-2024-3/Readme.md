@@ -1,5 +1,3 @@
-执行：
-
 制作数据集：
 
 behavior_image_classifier.py 是将标注的数据集（excel与图片）转化为json与图片分类，一步完成
