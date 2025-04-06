@@ -1,5 +1,17 @@
 '''
 python 1.py  via-classs-ST-2025-03-25  via1111
+
+以下文件发生了替换:
+文件: via1111/0002/0002.json
+对应的 vid 值: 27
+文件: via1111/0100/0100.json
+对应的 vid 值: 83, 82, 81, 79
+文件: via1111/1322/1322.json
+对应的 vid 值: 18
+文件: via1111/0001/0001.json
+对应的 vid 值: 61, 58, 58
+文件: via1111/1307/1307.json
+对应的 vid 值: 11, 12, 13
 '''
 import os
 import json
