@@ -50,3 +50,10 @@ bow the head、look up、turn the head
 执行代码如下：
 
 python viaExtendAction5.py  --SCB_via_org ./SCB5_jpg --SCB_via_new ./SCB5_jpg_10
+
+
+# json_modify_av_id.py
+
+在行为进行扩展的过程中，难免发生av下的id位置需要改变，json_modify_av_id就是改变id位置
+
+该Python脚本借助`argparse`库从命令行获取输入和输出文件夹路径，随后递归遍历输入文件夹及其子文件夹。对于其中的JSON文件，会检查其`metadata`字段下每个键的`av`字段，若存在键`2`且值为`6`或`7`，就将`av`字段分别替换成`{"3": "1"}`或`{"3": "2"}`，同时记录下对应条目的`vid`值。修改后的JSON文件会被保存到输出文件夹，非JSON文件则直接复制过去。最后，脚本会输出发生替换的JSON文件路径以及对应的`vid`值，若没有文件发生替换则给出相应提示。 
