@@ -1,3 +1,8 @@
+'''
+conda install x264 ffmpeg -c conda-forge -y
+
+conda install -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/ x264 ffmpeg -y
+'''
 # python cut_videos.py --IN_DATA_DIR videos_flotage_06 --OUT_DATA_DIR frames_flotage_06 --FRAME_RATE 1
 # python cut_videos.py --IN_DATA_DIR videos --OUT_DATA_DIR frames --FRAME_RATE 1
 # 将一个视频文件夹的视频抽帧
